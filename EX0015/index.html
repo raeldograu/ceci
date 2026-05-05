@@ -1,112 +1,189 @@
+```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <style>
-        body {
-            background-color: rgb(0, 0, 0);
-            color: aliceblue;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vote na Melhor Foto</title>
 
-        h1 {
-            color: blueviolet;
-            font-size: 30px;
-            text-align: center;
-            margin-top: 20px;
-        }
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        .container {
-            display: flex;
-            justify-content: center;
-            gap: 20px; /* Space between images */
-            margin-top: 20px;
-        }
+    body {
+      font-family: 'Arial', sans-serif;
+      background: linear-gradient(135deg, #000000, #1a001f, #32004b);
+      color: white;
+      min-height: 100vh;
+      overflow-x: hidden;
+      text-align: center;
+      animation: fundoAnimado 8s infinite alternate;
+    }
 
-        .image-item {
-            text-align: center;
-        }
+    @keyframes fundoAnimado {
+      0% { background-position: left; }
+      100% { background-position: right; }
+    }
 
-        .ft1{
-            height: 150px;
-            display: block;
-            margin: 0 auto;
-        }
+    h1 {
+      margin-top: 30px;
+      font-size: 2.5rem;
+      color: #ff4df0;
+      text-shadow: 0 0 10px #ff00ff, 0 0 20px #8a2be2;
+      animation: piscar 1.5s infinite alternate;
+    }
 
-        
-        .ft2{
-            height: 150px;
-            display: block;
-            margin: 0 auto;
-        }
+    @keyframes piscar {
+      from { transform: scale(1); }
+      to { transform: scale(1.05); }
+    }
 
-        button {
-            background-color: rgb(226, 43, 211);
-            border-radius: 20px;
-            border: 7px solid rgb(66, 21, 215);
-            color: white;
-            font-size: 16px;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin-top: 10px;
-            display: inline-block;
-        }
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 50px;
+      padding: 20px;
+    }
 
-        button:hover {
-            background-color: rgb(200, 30, 190);
-        }
+    .card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 2px solid #ff00ff;
+      border-radius: 25px;
+      padding: 20px;
+      width: 320px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 20px rgba(255, 0, 255, 0.4);
+      transition: all 0.4s ease;
+      position: relative;
+      overflow: hidden;
+    }
 
-        section {
-            margin-top: 20px;
-            text-align: center;
-        }
+    .card:hover {
+      transform: scale(1.08) rotate(2deg);
+      box-shadow: 0 0 30px #ff00ff;
+    }
 
-        p {
-            color: aliceblue;
-            font-size: 18px;
-        }
-    </style>
+    .card::before {
+      content: "";
+      position: absolute;
+      top: -100%;
+      left: -100%;
+      width: 300%;
+      height: 300%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+      transform: rotate(25deg);
+      animation: brilho 5s infinite;
+    }
+
+    @keyframes brilho {
+      0% { top: -100%; left: -100%; }
+      100% { top: 100%; left: 100%; }
+    }
+
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 20px;
+      border: 3px solid #8a2be2;
+      transition: transform 0.4s ease;
+    }
+
+    img:hover {
+      transform: scale(1.05);
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(45deg, #ff00cc, #3333ff);
+      box-shadow: 0 0 15px #ff00ff;
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px #ff00ff;
+    }
+
+    .resultado {
+      margin-top: 15px;
+      font-size: 1.1rem;
+      color: #ffffff;
+      text-shadow: 0 0 5px #ff00ff;
+    }
+
+    mark {
+      background-color: #ff00ff;
+      color: white;
+      padding: 4px 10px;
+      border-radius: 10px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #cccccc;
+    }
+  </style>
 </head>
 <body>
-    <h1>𝒞𝓁𝒾𝒸𝓀 𝓈𝑒 𝓋𝑜𝒸𝑒 𝑔𝑜𝓈𝓉𝑜𝓊 😘</h1>
 
-    <div class="container">
-        <div class="image-item">
-            <img src="WhatsApp Image 2024-09-17 at 11.50.32.jpeg" class="ft1">
-            <br>
-            <button onclick="a1()">❤️ 𝔓𝔯𝔦𝔪𝔢𝔦𝔯𝔞 𝔉𝔬𝔱𝔬 ❤️</button>
-        </div>
+  <h1>✨ Clique se você gostou 😘 ✨</h1>
 
-        <div class="image-item">
-            <img src="WhatsApp Image 2024-09-17 at 11.52.17.jpeg" class="ft2">
-            <br>
-            <button onclick="a2()">❤️ รєgยภ๔ค Ŧ๏т๏ ❤️</button>
-        </div>
+  <div class="container">
+
+    <div class="card">
+      <img src="ceci1.jpeg" alt="Primeira Foto">
+      <button onclick="votarFoto1()">❤️ Primeira Foto ❤️</button>
+      <div class="resultado" id="resultado1">
+        Primeira Foto
+      </div>
     </div>
 
-    <section id="s1"><p>𝔓𝔯𝔦𝔪𝔢𝔦𝔯𝔞 𝔉𝔬𝔱𝔬</p></section>
-    <section id="s2"><p>รєgยภ๔ค Ŧ๏т๏</p></section>
+    <div class="card">
+      <img src="ceci2.jpeg" alt="Segunda Foto">
+      <button onclick="votarFoto2()">❤️ Segunda Foto ❤️</button>
+      <div class="resultado" id="resultado2">
+        Segunda Foto
+      </div>
+    </div>
 
-    <script>
-        let contador1 = 0;
-        let contador2 = 0;
+  </div>
 
-        const vot1 = document.querySelector('section#s1');
-        const vot2 = document.querySelector('section#s2');
+  <footer>
+    Feito com efeitos exagerados porque claramente o bom senso foi abandonado.
+  </footer>
 
-        function a1() {
-            contador1++;
-            vot1.innerHTML = `<p>𝔓𝔯𝔦𝔪𝔢𝔦𝔯𝔞 𝔉𝔬𝔱𝔬, <mark>${contador1}</mark>pɛรรѳɑร gѳรtɑʀɑɱ ɗɑ Բѳtѳ!!!</p>`;
-        }
+  <script>
+    let contador1 = 0;
+    let contador2 = 0;
 
-        function a2() {
-            contador2++;
-            vot2.innerHTML = `<p>รєgยภ๔ค Ŧ๏т๏, <mark>${contador2}</mark>pɛรรѳɑร gѳรtɑʀɑɱ ɗɑ Բѳtѳ!!!!</p>`;
-        }
-    </script>
+    function votarFoto1() {
+      contador1++;
+      document.getElementById("resultado1").innerHTML =
+        `Primeira Foto recebeu <mark>${contador1}</mark> curtidas! 🎉`;
+    }
+
+    function votarFoto2() {
+      contador2++;
+      document.getElementById("resultado2").innerHTML =
+        `Segunda Foto recebeu <mark>${contador2}</mark> curtidas! 💖`;
+    }
+  </script>
+
 </body>
 </html>
+```
